@@ -1,0 +1,61 @@
+:root {
+  /* Primary Colors */
+  --color-primary: #FC9C84;
+  --color-primary-light: #FDB09D;
+  --color-primary-dark: #CA7D6A;
+
+  /* Secondary Colors */
+  --color-secondary: #F8EEE1;
+  --color-accent: #8490C8;
+
+  /* Background Colors */
+  --color-bg-primary: #FC9C84;
+  --color-bg-secondary: #F8EEE1;
+
+  /* Text Colors */
+  --color-text-primary: #292929;
+  --color-text-secondary: #B06F4F;
+  --color-text-muted: #8A8A8A;
+
+  /* Interactive Colors */
+  --color-button-primary: #F8EEE1;
+  --color-button-hover: #DFD6CB;
+  --color-link: #8490C8;
+  --color-link-hover: #707AAA;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary: #3A2A24;
+    --color-bg-secondary: #2A2622;
+    --color-text-primary: #F5EFEA;
+    --color-text-secondary: #E0B39A;
+    --color-text-muted: #9A9A9A;
+    --color-primary: #E28A6E;
+    --color-accent: #9AA6D8;
+    --color-button-primary: #4A423A;
+    --color-button-hover: #5A5048;
+  }
+}
+
+/* CSS 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+/* HTML, Body 초기화 */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg-secondary);
+}
+
+/* Root 앱 컨테이너 설정 */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
