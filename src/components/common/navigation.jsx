@@ -52,10 +52,15 @@ function Navigation() {
               end={item.to === '/'}
               sx={{
                 color: colors.textSecondary,
-                fontWeight: 600,
+                fontWeight: 500,
                 px: { xs: 1.5, md: 2 },
+                borderRadius: 0,
+                borderBottom: '3px solid transparent',
                 '&.active': {
-                  color: colors.accent,
+                  color: colors.linkHover,
+                  fontWeight: 700,
+                  backgroundColor: `${colors.accent}1A`,
+                  borderBottom: `3px solid ${colors.accent}`,
                 },
                 '&:hover': {
                   backgroundColor: colors.buttonHover,
