@@ -30,7 +30,14 @@ function Navigation() {
         borderBottom: `1px solid ${colors.buttonHover}`,
       }}
     >
-      <Toolbar sx={{ justifyContent: 'center', gap: { xs: 1, md: 4 }, py: 1 }}>
+      <Toolbar
+        sx={{
+          justifyContent: { xs: 'center', md: 'flex-end' },
+          gap: { xs: 1, md: 4 },
+          py: 1,
+          px: { md: 4 },
+        }}
+      >
         <Typography
           variant="h6"
           sx={{
