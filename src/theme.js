@@ -31,24 +31,31 @@ export const colors = {
   onError: 'var(--md-on-error)',
 };
 
+/**
+ * MUI createTheme 의 palette 는 라이트/다크 셰이드를 자동 계산하기 위해
+ * decomposeColor 로 실제 색상 값을 파싱하므로 var(--md-xxx) 문자열을 넣으면
+ * "Unsupported color" 에러로 앱 전체가 렌더링되지 않는다.
+ * 따라서 palette 에는 라이트 모드 리터럴 값만 사용하고, 실제 다크모드 대응 색상은
+ * 각 컴포넌트의 sx 에서 위 colors(CSS 변수) 객체를 직접 참조해 처리한다.
+ */
 const theme = createTheme({
   palette: {
     primary: {
-      main: colors.primary,
-      contrastText: colors.onPrimary,
+      main: '#8F4B3A',
+      contrastText: '#FFFFFF',
     },
     background: {
-      default: colors.surface,
-      paper: colors.surfaceContainer,
+      default: '#FFF8F6',
+      paper: '#FCEAE6',
     },
     text: {
-      primary: colors.onSurface,
-      secondary: colors.onSurfaceVariant,
-      disabled: colors.outline,
+      primary: '#231917',
+      secondary: '#534340',
+      disabled: '#85736F',
     },
     error: {
-      main: colors.error,
-      contrastText: colors.onError,
+      main: '#BA1A1A',
+      contrastText: '#FFFFFF',
     },
   },
   typography: {
