@@ -68,17 +68,23 @@ function ContactSection() {
           </Grid>
         </Grid>
 
-        <Typography
-          variant="h5"
-          sx={{
-            fontSize: { xs: '1.2rem', md: '1.4rem' },
-            fontWeight: 700,
-            color: colors.onSurface,
-            mb: 3,
-          }}
-        >
-          방명록
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1, mb: 3 }}>
+          <Typography
+            variant="h5"
+            sx={{
+              fontSize: { xs: '1.2rem', md: '1.4rem' },
+              fontWeight: 700,
+              color: colors.onSurface,
+            }}
+          >
+            방명록
+          </Typography>
+          {!isLoading && !error && (
+            <Typography sx={{ fontSize: '0.95rem', color: colors.outline }}>
+              총 {entries.length}개
+            </Typography>
+          )}
+        </Box>
         <GuestbookList entries={entries} isLoading={isLoading} error={error} />
       </Container>
     </Box>
