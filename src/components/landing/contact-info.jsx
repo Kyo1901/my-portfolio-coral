@@ -2,13 +2,16 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import Snackbar from '@mui/material/Snackbar';
 import EmailIcon from '@mui/icons-material/Email';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { colors } from '../../theme.js';
 
 /**
  * ContactInfo 컴포넌트
- * 이메일(아이콘+텍스트)과 SNS(GitHub) 원형 아이콘 버튼을 보여주는 연락처 정보 영역
+ * 이메일(아이콘+텍스트, 클릭 시 클립보드 복사)과 SNS(GitHub) 원형 아이콘 버튼을 보여주는 연락처 정보 영역
  *
  * Props:
  * @param {string} email - 공개 이메일 주소 [Required]
@@ -18,13 +21,24 @@ import { colors } from '../../theme.js';
  * <ContactInfo email="skadnjs153@naver.com" githubUrl="https://github.com/Kyo1901" />
  */
 function ContactInfo({ email, githubUrl }) {
+  const [isCopied, setIsCopied] = React.useState(false);
+
+  async function handleCopyEmail() {
+    try {
+      await navigator.clipboard.writeText(email);
+      setIsCopied(true);
+    } catch {
+      setIsCopied(false);
+    }
+  }
+
   return (
     <Box
       sx={{
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         gap: 3,
         p: { xs: 3, md: 4 },
       }}
@@ -40,23 +54,41 @@ function ContactInfo({ email, githubUrl }) {
         Get In Touch
       </Typography>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-        <EmailIcon sx={{ color: colors.accent }} />
-        <Typography
-          component="a"
-          href={`mailto:${email}`}
+      <Tooltip title="클릭하여 이메일 주소 복사">
+        <Box
+          role="button"
+          tabIndex={0}
+          onClick={handleCopyEmail}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              handleCopyEmail();
+            }
+          }}
           sx={{
-            fontSize: { xs: '1rem', md: '1.1rem' },
-            color: colors.textSecondary,
-            textDecoration: 'none',
-            '&:hover': {
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+            cursor: 'pointer',
+            width: 'fit-content',
+            '&:hover .contact-info__email-text': {
               color: colors.linkHover,
             },
           }}
         >
-          {email}
-        </Typography>
-      </Box>
+          <EmailIcon sx={{ color: colors.accent }} />
+          <Typography
+            className="contact-info__email-text"
+            sx={{
+              fontSize: { xs: '1rem', md: '1.1rem' },
+              color: colors.textSecondary,
+            }}
+          >
+            {email}
+          </Typography>
+          <ContentCopyIcon sx={{ fontSize: 16, color: colors.textMuted }} />
+        </Box>
+      </Tooltip>
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
         <Typography
@@ -87,6 +119,14 @@ function ContactInfo({ email, githubUrl }) {
           <GitHubIcon />
         </IconButton>
       </Box>
+
+      <Snackbar
+        open={isCopied}
+        autoHideDuration={2000}
+        onClose={() => setIsCopied(false)}
+        message="이메일 주소가 복사되었습니다."
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      />
     </Box>
   );
 }
