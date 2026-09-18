@@ -20,7 +20,7 @@ function Projects() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.bgSecondary,
+        backgroundColor: colors.surface,
         py: { xs: 2, md: 4 },
       }}
     >
@@ -30,7 +30,7 @@ function Projects() {
           sx={{
             fontSize: { xs: '2rem', md: '3rem' },
             fontWeight: 700,
-            color: colors.textPrimary,
+            color: colors.onSurface,
             mb: 2,
           }}
         >
@@ -40,7 +40,7 @@ function Projects() {
           sx={{
             fontSize: { xs: '1rem', md: '1.2rem' },
             lineHeight: 1.6,
-            color: colors.textSecondary,
+            color: colors.onSurfaceVariant,
           }}
         >
           Projects 페이지가 개발될 공간입니다. 포트폴리오 작품들이 들어갈 예정입니다.

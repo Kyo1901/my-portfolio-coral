@@ -20,7 +20,7 @@ function AboutMeSection() {
       component="section"
       sx={{
         width: '100%',
-        backgroundColor: colors.bgSecondary,
+        backgroundColor: colors.surface,
         display: 'flex',
         justifyContent: 'center',
         py: { xs: 6, md: 10 },
@@ -31,8 +31,8 @@ function AboutMeSection() {
         <Card
           elevation={0}
           sx={{
-            backgroundColor: colors.secondary,
-            border: `1px solid ${colors.buttonHover}`,
+            backgroundColor: colors.surfaceContainer,
+            border: `1px solid ${colors.outlineVariant}`,
             borderRadius: 3,
           }}
         >
@@ -42,7 +42,7 @@ function AboutMeSection() {
               sx={{
                 fontSize: { xs: '1.5rem', md: '2rem' },
                 fontWeight: 700,
-                color: colors.textPrimary,
+                color: colors.onSurface,
                 mb: 2,
               }}
             >
@@ -52,7 +52,7 @@ function AboutMeSection() {
               sx={{
                 fontSize: { xs: '1rem', md: '1.1rem' },
                 lineHeight: 1.6,
-                color: colors.textSecondary,
+                color: colors.onSurfaceVariant,
                 mb: 3,
               }}
             >
@@ -61,10 +61,10 @@ function AboutMeSection() {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: colors.accent,
-                color: colors.secondary,
+                backgroundColor: colors.tertiary,
+                color: colors.onTertiary,
                 '&:hover': {
-                  backgroundColor: colors.linkHover,
+                  backgroundColor: colors.tertiaryHover,
                 },
               }}
             >

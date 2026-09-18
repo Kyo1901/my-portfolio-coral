@@ -48,7 +48,7 @@ function ContactInfo({ email, githubUrl }) {
         sx={{
           fontSize: { xs: '1.3rem', md: '1.6rem' },
           fontWeight: 700,
-          color: colors.textPrimary,
+          color: colors.onPrimaryContainer,
         }}
       >
         Get In Touch
@@ -72,21 +72,21 @@ function ContactInfo({ email, githubUrl }) {
             cursor: 'pointer',
             width: 'fit-content',
             '&:hover .contact-info__email-text': {
-              color: colors.linkHover,
+              color: colors.tertiary,
             },
           }}
         >
-          <EmailIcon sx={{ color: colors.accent }} />
+          <EmailIcon sx={{ color: colors.tertiary }} />
           <Typography
             className="contact-info__email-text"
             sx={{
               fontSize: { xs: '1rem', md: '1.1rem' },
-              color: colors.textSecondary,
+              color: colors.onPrimaryContainer,
             }}
           >
             {email}
           </Typography>
-          <ContentCopyIcon sx={{ fontSize: 16, color: colors.textMuted }} />
+          <ContentCopyIcon sx={{ fontSize: 16, color: colors.onPrimaryContainer, opacity: 0.6 }} />
         </Box>
       </Tooltip>
 
@@ -94,7 +94,8 @@ function ContactInfo({ email, githubUrl }) {
         <Typography
           sx={{
             fontSize: { xs: '0.9rem', md: '1rem' },
-            color: colors.textMuted,
+            color: colors.onPrimaryContainer,
+            opacity: 0.7,
           }}
         >
           Follow Us On
@@ -108,11 +109,11 @@ function ContactInfo({ email, githubUrl }) {
           sx={{
             width: 44,
             height: 44,
-            backgroundColor: colors.secondary,
-            border: `1px solid ${colors.buttonHover}`,
-            color: colors.textPrimary,
+            backgroundColor: colors.surfaceContainer,
+            border: `1px solid ${colors.outlineVariant}`,
+            color: colors.onSurface,
             '&:hover': {
-              backgroundColor: colors.buttonHover,
+              backgroundColor: colors.surfaceContainerHigh,
             },
           }}
         >

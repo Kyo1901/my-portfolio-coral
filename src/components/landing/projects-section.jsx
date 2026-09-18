@@ -22,7 +22,7 @@ function ProjectsSection() {
       component="section"
       sx={{
         width: '100%',
-        backgroundColor: colors.bgSecondary,
+        backgroundColor: colors.surface,
         display: 'flex',
         justifyContent: 'center',
         py: { xs: 6, md: 10 },
@@ -35,7 +35,7 @@ function ProjectsSection() {
           sx={{
             fontSize: { xs: '1.5rem', md: '2rem' },
             fontWeight: 700,
-            color: colors.textPrimary,
+            color: colors.onSurface,
             mb: 2,
           }}
         >
@@ -45,7 +45,7 @@ function ProjectsSection() {
           sx={{
             fontSize: { xs: '1rem', md: '1.1rem' },
             lineHeight: 1.6,
-            color: colors.textSecondary,
+            color: colors.onSurfaceVariant,
             mb: 4,
           }}
         >
@@ -58,12 +58,12 @@ function ProjectsSection() {
                 elevation={0}
                 sx={{
                   aspectRatio: '1 / 1',
-                  backgroundColor: colors.primaryLight,
+                  backgroundColor: colors.primaryContainer,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderRadius: 2,
-                  color: colors.textPrimary,
+                  color: colors.onPrimaryContainer,
                 }}
               >
                 Project {n}
@@ -74,10 +74,10 @@ function ProjectsSection() {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: colors.accent,
-            color: colors.secondary,
+            backgroundColor: colors.tertiary,
+            color: colors.onTertiary,
             '&:hover': {
-              backgroundColor: colors.linkHover,
+              backgroundColor: colors.tertiaryHover,
             },
           }}
         >

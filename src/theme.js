@@ -1,47 +1,54 @@
 import { createTheme } from '@mui/material/styles';
 
 /**
- * 컬러 팔레트 디자인 시스템.md 에서 추출한 원본 컬러 값
- * (MUI palette 로 표현하기 어려운 색상은 컴포넌트에서 sx={{ color: colors.xxx }} 형태로 직접 사용)
+ * 색상 팔레트 디자인 시스템.md 에서 정의한 Material Design 3 색상 토큰
+ * index.css 의 CSS 변수(:root, prefers-color-scheme, [data-theme]) 값을 그대로 참조하므로
+ * 라이트/다크 모드 전환 시 컴포넌트 코드 수정 없이 자동으로 색상이 바뀐다.
  */
 export const colors = {
-  primary: '#FC9C84',
-  primaryLight: '#FDB09D',
-  primaryDark: '#CA7D6A',
-  secondary: '#F8EEE1',
-  accent: '#8490C8',
-  bgPrimary: '#FC9C84',
-  bgSecondary: '#F8EEE1',
-  textPrimary: '#292929',
-  textSecondary: '#B06F4F',
-  textMuted: '#8A8A8A',
-  buttonPrimary: '#F8EEE1',
-  buttonHover: '#DFD6CB',
-  link: '#8490C8',
-  linkHover: '#707AAA',
+  primary: 'var(--md-primary)',
+  onPrimary: 'var(--md-on-primary)',
+  primaryContainer: 'var(--md-primary-container)',
+  onPrimaryContainer: 'var(--md-on-primary-container)',
+
+  tertiary: 'var(--md-tertiary)',
+  onTertiary: 'var(--md-on-tertiary)',
+  tertiaryContainer: 'var(--md-tertiary-container)',
+  onTertiaryContainer: 'var(--md-on-tertiary-container)',
+  tertiaryHover: 'color-mix(in srgb, var(--md-tertiary) 88%, var(--md-on-tertiary) 12%)',
+
+  surface: 'var(--md-surface)',
+  surfaceContainer: 'var(--md-surface-container)',
+  surfaceContainerHigh: 'var(--md-surface-container-high)',
+  surfaceContainerHighest: 'var(--md-surface-container-highest)',
+  onSurface: 'var(--md-on-surface)',
+  onSurfaceVariant: 'var(--md-on-surface-variant)',
+
+  outline: 'var(--md-outline)',
+  outlineVariant: 'var(--md-outline-variant)',
+
+  error: 'var(--md-error)',
+  onError: 'var(--md-on-error)',
 };
 
 const theme = createTheme({
   palette: {
     primary: {
       main: colors.primary,
-      light: colors.primaryLight,
-      dark: colors.primaryDark,
-      contrastText: colors.textPrimary,
-    },
-    secondary: {
-      main: colors.secondary,
-      dark: colors.buttonHover,
-      contrastText: colors.textPrimary,
+      contrastText: colors.onPrimary,
     },
     background: {
-      default: colors.bgSecondary,
-      paper: colors.secondary,
+      default: colors.surface,
+      paper: colors.surfaceContainer,
     },
     text: {
-      primary: colors.textPrimary,
-      secondary: colors.textSecondary,
-      disabled: colors.textMuted,
+      primary: colors.onSurface,
+      secondary: colors.onSurfaceVariant,
+      disabled: colors.outline,
+    },
+    error: {
+      main: colors.error,
+      contrastText: colors.onError,
     },
   },
   typography: {

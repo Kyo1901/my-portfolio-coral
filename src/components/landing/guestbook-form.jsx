@@ -86,9 +86,9 @@ function GuestbookForm({ onSubmit }) {
         flexDirection: 'column',
         gap: 2.5,
         p: { xs: 3, md: 4 },
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.surfaceContainer,
         borderRadius: 3,
-        border: `1px solid ${colors.buttonHover}`,
+        border: `1px solid ${colors.outlineVariant}`,
       }}
     >
       <TextField
@@ -121,13 +121,13 @@ function GuestbookForm({ onSubmit }) {
         fullWidth
       />
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-        <Typography sx={{ fontSize: '0.95rem', color: colors.textSecondary }}>
+        <Typography sx={{ fontSize: '0.95rem', color: colors.onSurfaceVariant }}>
           별점 평가
         </Typography>
         <Rating
           value={form.rating}
           onChange={(_event, newValue) => setForm((prev) => ({ ...prev, rating: newValue }))}
-          sx={{ color: colors.accent }}
+          sx={{ color: colors.tertiary }}
         />
       </Box>
 
@@ -143,15 +143,15 @@ function GuestbookForm({ onSubmit }) {
         disabled={isSubmitting}
         sx={{
           alignSelf: 'flex-start',
-          backgroundColor: colors.accent,
-          color: colors.secondary,
+          backgroundColor: colors.tertiary,
+          color: colors.onTertiary,
           px: 4,
           '&:hover': {
-            backgroundColor: colors.linkHover,
+            backgroundColor: colors.tertiaryHover,
           },
         }}
       >
-        {isSubmitting ? <CircularProgress size={22} sx={{ color: colors.secondary }} /> : '등록하기'}
+        {isSubmitting ? <CircularProgress size={22} sx={{ color: colors.onTertiary }} /> : '등록하기'}
       </Button>
     </Box>
   );

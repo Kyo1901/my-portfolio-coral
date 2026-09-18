@@ -29,7 +29,7 @@ function ContactSection() {
       component="section"
       sx={{
         width: '100%',
-        backgroundColor: colors.bgSecondary,
+        backgroundColor: colors.surface,
         display: 'flex',
         justifyContent: 'center',
         py: { xs: 6, md: 10 },
@@ -42,7 +42,7 @@ function ContactSection() {
           sx={{
             fontSize: { xs: '1.5rem', md: '2rem' },
             fontWeight: 700,
-            color: colors.textPrimary,
+            color: colors.onSurface,
             textAlign: 'center',
             mb: { xs: 4, md: 6 },
           }}
@@ -59,7 +59,7 @@ function ContactSection() {
               elevation={0}
               sx={{
                 height: '100%',
-                backgroundColor: colors.primaryLight,
+                backgroundColor: colors.primaryContainer,
                 borderRadius: 3,
               }}
             >
@@ -73,7 +73,7 @@ function ContactSection() {
           sx={{
             fontSize: { xs: '1.2rem', md: '1.4rem' },
             fontWeight: 700,
-            color: colors.textPrimary,
+            color: colors.onSurface,
             mb: 3,
           }}
         >

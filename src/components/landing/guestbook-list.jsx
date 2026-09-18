@@ -26,7 +26,7 @@ function GuestbookList({ entries, isLoading = false, error = null }) {
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-        <CircularProgress sx={{ color: colors.accent }} />
+        <CircularProgress sx={{ color: colors.tertiary }} />
       </Box>
     );
   }
@@ -41,7 +41,7 @@ function GuestbookList({ entries, isLoading = false, error = null }) {
 
   if (entries.length === 0) {
     return (
-      <Typography sx={{ textAlign: 'center', color: colors.textMuted, py: 6 }}>
+      <Typography sx={{ textAlign: 'center', color: colors.outline, py: 6 }}>
         아직 등록된 방명록이 없습니다. 첫 번째 방명록을 남겨보세요!
       </Typography>
     );
@@ -55,8 +55,8 @@ function GuestbookList({ entries, isLoading = false, error = null }) {
             elevation={0}
             sx={{
               height: '100%',
-              backgroundColor: colors.secondary,
-              border: `1px solid ${colors.buttonHover}`,
+              backgroundColor: colors.surfaceContainer,
+              border: `1px solid ${colors.outlineVariant}`,
               borderRadius: 3,
             }}
           >
@@ -69,17 +69,17 @@ function GuestbookList({ entries, isLoading = false, error = null }) {
                   mb: 1,
                 }}
               >
-                <Typography sx={{ fontWeight: 700, color: colors.textPrimary }}>
+                <Typography sx={{ fontWeight: 700, color: colors.onSurface }}>
                   {entry.name}
                 </Typography>
-                <Typography sx={{ fontSize: '0.85rem', color: colors.textMuted }}>
+                <Typography sx={{ fontSize: '0.85rem', color: colors.outline }}>
                   {formatDate(entry.created_at)}
                 </Typography>
               </Box>
               {entry.rating && (
-                <Rating value={entry.rating} readOnly size="small" sx={{ color: colors.accent, mb: 1 }} />
+                <Rating value={entry.rating} readOnly size="small" sx={{ color: colors.tertiary, mb: 1 }} />
               )}
-              <Typography sx={{ color: colors.textSecondary, lineHeight: 1.6 }}>
+              <Typography sx={{ color: colors.onSurfaceVariant, lineHeight: 1.6 }}>
                 {entry.message}
               </Typography>
             </CardContent>

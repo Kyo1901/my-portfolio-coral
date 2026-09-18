@@ -17,7 +17,7 @@ function SkillTreeSection() {
       component="section"
       sx={{
         width: '100%',
-        backgroundColor: colors.primaryLight,
+        backgroundColor: colors.primaryContainer,
         display: 'flex',
         justifyContent: 'center',
         py: { xs: 6, md: 10 },
@@ -30,7 +30,7 @@ function SkillTreeSection() {
           sx={{
             fontSize: { xs: '1.5rem', md: '2rem' },
             fontWeight: 700,
-            color: colors.textPrimary,
+            color: colors.onPrimaryContainer,
             mb: 2,
           }}
         >
@@ -40,7 +40,8 @@ function SkillTreeSection() {
           sx={{
             fontSize: { xs: '1rem', md: '1.1rem' },
             lineHeight: 1.6,
-            color: colors.primaryDark,
+            color: colors.onPrimaryContainer,
+            opacity: 0.85,
           }}
         >
           여기는 Skill Tree 섹션입니다. 기술 스택을 트리나 프로그레스바로 시각화할 예정입니다.

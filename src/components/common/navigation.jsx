@@ -26,8 +26,8 @@ function Navigation() {
       position="sticky"
       elevation={0}
       sx={{
-        backgroundColor: colors.secondary,
-        borderBottom: `1px solid ${colors.buttonHover}`,
+        backgroundColor: colors.surfaceContainer,
+        borderBottom: `1px solid ${colors.outlineVariant}`,
       }}
     >
       <Toolbar
@@ -43,7 +43,7 @@ function Navigation() {
           sx={{
             position: { xs: 'static', md: 'absolute' },
             left: { md: 24 },
-            color: colors.textPrimary,
+            color: colors.onSurface,
             fontWeight: 700,
             mr: { xs: 2, md: 0 },
           }}
@@ -58,19 +58,19 @@ function Navigation() {
               to={item.to}
               end={item.to === '/'}
               sx={{
-                color: colors.textSecondary,
+                color: colors.onSurfaceVariant,
                 fontWeight: 500,
                 px: { xs: 1.5, md: 2 },
                 borderRadius: 0,
                 borderBottom: '3px solid transparent',
                 '&.active': {
-                  color: colors.linkHover,
+                  color: colors.onTertiaryContainer,
                   fontWeight: 700,
-                  backgroundColor: `${colors.accent}1A`,
-                  borderBottom: `3px solid ${colors.accent}`,
+                  backgroundColor: colors.tertiaryContainer,
+                  borderBottom: `3px solid ${colors.tertiary}`,
                 },
                 '&:hover': {
-                  backgroundColor: colors.buttonHover,
+                  backgroundColor: colors.surfaceContainerHigh,
                 },
               }}
             >
