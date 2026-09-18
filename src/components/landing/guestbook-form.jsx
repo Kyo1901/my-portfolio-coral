@@ -39,7 +39,7 @@ function GuestbookForm({ onSubmit }) {
     if (form.name.trim().length < 1 || form.name.trim().length > 50) {
       nextErrors.name = '이름을 1~50자로 입력해주세요.';
     }
-    if (!EMAIL_PATTERN.test(form.email.trim())) {
+    if (form.email.trim().length > 0 && !EMAIL_PATTERN.test(form.email.trim())) {
       nextErrors.email = '올바른 이메일 형식을 입력해주세요.';
     }
     if (form.message.trim().length < 1 || form.message.trim().length > 500) {
@@ -62,7 +62,7 @@ function GuestbookForm({ onSubmit }) {
     try {
       await onSubmit({
         name: form.name.trim(),
-        email: form.email.trim(),
+        email: form.email.trim().length > 0 ? form.email.trim() : null,
         message: form.message.trim(),
         rating: form.rating,
       });
@@ -101,8 +101,8 @@ function GuestbookForm({ onSubmit }) {
         fullWidth
       />
       <TextField
-        label="Your Email"
-        placeholder="이메일 주소를 입력해주세요"
+        label="Your Email (선택)"
+        placeholder="이메일 주소를 입력해주세요 (선택 입력)"
         value={form.email}
         onChange={handleChange('email')}
         error={Boolean(errors.email)}
