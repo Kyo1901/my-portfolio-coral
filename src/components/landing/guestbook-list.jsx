@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -8,6 +7,7 @@ import Rating from '@mui/material/Rating';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
+import AnimatedList from '../ui/animated-list.jsx';
 import formatDate from '../../utils/format-date.js';
 import { colors } from '../../theme.js';
 
@@ -15,9 +15,54 @@ const INITIAL_VISIBLE_COUNT = 6;
 const LOAD_MORE_STEP = 4;
 
 /**
+ * 방명록 항목 하나를 카드로 그린다 (이메일은 표시하지 않음)
+ * @param {object} entry - 방명록 항목 { id, name, message, rating, created_at }
+ */
+function renderEntry(entry) {
+  return (
+    <Card
+      elevation={0}
+      sx={{
+        height: '100%',
+        backgroundColor: colors.surfaceContainer,
+        border: `1px solid ${colors.outlineVariant}`,
+        borderRadius: 3,
+      }}
+    >
+      <CardContent>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            mb: 1,
+          }}
+        >
+          <Typography sx={{ fontWeight: 700, color: colors.onSurface }}>
+            {entry.name}
+          </Typography>
+          <Typography sx={{ fontSize: '0.85rem', color: colors.outline }}>
+            {formatDate(entry.created_at)}
+          </Typography>
+        </Box>
+        {entry.rating && (
+          <Rating value={entry.rating} readOnly size="small" sx={{ color: colors.tertiary, mb: 1 }} />
+        )}
+        <Typography sx={{ color: colors.onSurfaceVariant, lineHeight: 1.6 }}>
+          {entry.message}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+}
+
+const getEntryKey = (entry) => entry.id;
+
+/**
  * GuestbookList 컴포넌트
  * 등록된 방명록 목록을 카드 형태로 나열 (이메일은 표시하지 않음)
  * 처음에는 6개까지만 보여주고, '더보기' 클릭 시 4개씩 추가로 노출한다
+ * 목록이 화면에 보이면 카드가 하나씩 튀어나오고(Magic UI Animated List 효과), 새 방명록은 맨 위에서 튀어나오며 기존 카드를 밀어낸다
  *
  * Props:
  * @param {array} entries - 방명록 항목 배열 [Required]
@@ -59,45 +104,7 @@ function GuestbookList({ entries, isLoading = false, error = null }) {
 
   return (
     <>
-      <Grid container spacing={2}>
-        {visibleEntries.map((entry) => (
-          <Grid key={entry.id} size={{ xs: 12, md: 6 }}>
-            <Card
-              elevation={0}
-              sx={{
-                height: '100%',
-                backgroundColor: colors.surfaceContainer,
-                border: `1px solid ${colors.outlineVariant}`,
-                borderRadius: 3,
-              }}
-            >
-              <CardContent>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    mb: 1,
-                  }}
-                >
-                  <Typography sx={{ fontWeight: 700, color: colors.onSurface }}>
-                    {entry.name}
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.85rem', color: colors.outline }}>
-                    {formatDate(entry.created_at)}
-                  </Typography>
-                </Box>
-                {entry.rating && (
-                  <Rating value={entry.rating} readOnly size="small" sx={{ color: colors.tertiary, mb: 1 }} />
-                )}
-                <Typography sx={{ color: colors.onSurfaceVariant, lineHeight: 1.6 }}>
-                  {entry.message}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <AnimatedList items={visibleEntries} getKey={getEntryKey} renderItem={renderEntry} />
 
       {hasMore && (
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>

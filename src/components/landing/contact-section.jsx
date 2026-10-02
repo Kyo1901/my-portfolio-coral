@@ -8,10 +8,8 @@ import GuestbookForm from './guestbook-form.jsx';
 import ContactInfo from './contact-info.jsx';
 import GuestbookList from './guestbook-list.jsx';
 import useGuestbook from '../../hooks/use-guestbook.js';
+import { CONTACT_EMAIL, GITHUB_URL } from '../../utils/contact-data.js';
 import { colors } from '../../theme.js';
-
-const CONTACT_EMAIL = 'skadnjs153@naver.com';
-const GITHUB_URL = 'https://github.com/Kyo1901';
 
 /**
  * ContactSection 컴포넌트
