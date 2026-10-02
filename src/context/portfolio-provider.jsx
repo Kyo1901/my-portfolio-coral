@@ -2,15 +2,14 @@ import * as React from 'react';
 import PortfolioContext from './portfolio-context.js';
 import aboutMeData from '../utils/about-me-data.js';
 import skillsData from '../utils/skills-data.js';
-import { getTopSkills } from '../utils/skill-utils.js';
+import { getMainSkills } from '../utils/skill-utils.js';
 import { createSummary } from '../utils/text-utils.js';
 
-const HOME_SKILL_COUNT = 4;
 const HOME_SUMMARY_LENGTH = 100;
 
 /**
  * PortfolioProvider 컴포넌트
- * About Me 데이터를 state 로 보관하고, 홈 탭용 데이터(showInHome 섹션 요약 + 상위 스킬)를 자동 생성해 제공한다.
+ * About Me 데이터를 state 로 보관하고, 홈 탭용 데이터(showInHome 섹션 요약 + 대표(isMain) 스킬)를 자동 생성해 제공한다.
  * About Me 데이터가 바뀌면 이 Provider 를 구독하는 홈 탭이 즉시 다시 그려진다.
  *
  * Props:
@@ -58,7 +57,7 @@ function PortfolioProvider({ children }) {
         title: section.title,
         summary: section.homeSummary ?? createSummary(section.content, HOME_SUMMARY_LENGTH),
       })),
-    skills: getTopSkills(data.skills, HOME_SKILL_COUNT),
+    skills: getMainSkills(data.skills),
   }), [data]);
 
   const getHomeData = React.useCallback(() => homeData, [homeData]);
