@@ -111,4 +111,4 @@ function ProfileCard({ basicInfo }) {
   );
 }
 
-export default ProfileCard;
+export default React.memo(ProfileCard);
