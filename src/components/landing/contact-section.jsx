@@ -27,6 +27,7 @@ function ContactSection() {
   return (
     <Box
       component="section"
+      id="contact"
       sx={{
         width: '100%',
         backgroundColor: colors.surface,
